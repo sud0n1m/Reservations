@@ -3,8 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'heroku'
-gem 'html5-boilerplate'
-gem "compass", ">= 0.10.6"
 gem 'jquery-rails', '>= 0.2.6'
 
 group :development do
