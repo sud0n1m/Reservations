@@ -179,13 +179,67 @@ button {  width: auto; overflow: visible; }
     Author: Colin Nederkoorn
  */
 
+/* HEADER STYLES */
+
+#title{
+	font-size: 1.15em;
+}
+
+header{
+	padding-bottom: 8px;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+nav {
+	float: right;
+}
+
+nav {
+	background-color: white;
+	padding: 0 0.7em;
+	white-space:  nowrap;
+}
+
+nav ul{
+	margin: 0;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	padding: 0.2em 0;
+}
+
+nav ul li a{
+	padding:  0 5px;
+	font-weight: bold;
+}
+
+/* MAIN BODY */
+
+
 h1{
 	font-size: 2em;
+}
+
+h2{
+	font-size: 1.2em;
 }
 
 body {
 	width: 960px;
 	margin: 10px auto 15px auto;
+}
+
+
+
+
+/* Mailchimp Signup Form */
+#mc_embed_signup {
+	width: 300px;
+	margin: 10px 0 15px 0;
+	background-color: rgba(200,200,200,0.8);
+	padding: 20px;
 }
 
 

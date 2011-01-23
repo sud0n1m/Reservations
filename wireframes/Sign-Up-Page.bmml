@@ -1,0 +1,41 @@
+<mockup version="1.0" skin="sketch" measuredW="713" measuredH="588" mockupW="652" mockupH="525">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="61" y="63" w="652" h="525" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reservations%20App%0Ahttp%3A//reservations.heroku.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="92" y="156" w="-1" h="-1" measuredW="232" measuredH="56" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reservations</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="92" y="208" w="-1" h="-1" measuredW="521" measuredH="37" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Manage%20property%20reservations%20online%20painlessly</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Canvas" x="92" y="272" w="452" h="192" measuredW="100" measuredH="70" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14540253</color>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::TextInput" x="107" y="355" w="213" h="27" measuredW="75" measuredH="27" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="107" y="332" w="-1" h="-1" measuredW="88" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Email%20Address</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::SubTitle" x="107" y="287" w="-1" h="-1" measuredW="399" measuredH="29" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Sign%20up%20and%20we%27ll%20let%20you%20know%20when%20we%20launch.</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="107" y="395" w="125" h="28" measuredW="70" measuredH="28" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Sign%20Up</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
