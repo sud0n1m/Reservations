@@ -1,0 +1,29 @@
+<mockup version="1.0" skin="sketch" measuredW="713" measuredH="588" mockupW="652" mockupH="525">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="61" y="63" w="652" h="525" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reservations%20App%0Ahttp%3A//reservations.heroku.com/properties</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="84" y="188" w="-1" h="-1" measuredW="191" measuredH="56" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Properties</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Component" x="74" y="144" w="624" h="32" measuredW="624" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/symbols.bmml#Header</src>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::DataGrid" x="84" y="290" w="614" h="235" measuredW="316" measuredH="116" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Property%5E%0AThe%20Longhouse%2C%20%5BEdit%5D%20%7C%20%5BDelete%5D%0AThe%20Istana%2C%20%5BEdit%5D%20%7C%20%5BDelete%5D%0AVilla%20Bali%20Nusa%20Dua%20Long%20ass%20Name%2C%20%5BEdit%5D%20%7C%20%5BDelete%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Button" x="84" y="250" w="180" h="28" measuredW="143" measuredH="28" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20a%20new%20property</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

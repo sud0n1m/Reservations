@@ -1,0 +1,36 @@
+<mockup version="1.0" skin="sketch" measuredW="713" measuredH="588" mockupW="652" mockupH="525">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="61" y="63" w="652" h="525" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Reservations%20App%0Ahttp%3A//reservations.heroku.com/properties</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Title" x="90" y="216" w="-1" h="-1" measuredW="268" measuredH="56" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20Longhouse</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Component" x="74" y="144" w="624" h="32" measuredW="624" measuredH="32" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/symbols.bmml#Header</src>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Link" x="90" y="188" w="-1" h="-1" measuredW="119" measuredH="23" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>Properties-List%26bm%3BProperties-List.bmml%26bm%3BProperties-List.bmml%26bm%3BProperties-List.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2229%2C125%2C148%2C148%22%20href%3D%22Properties-List.bmml%22%20alt%3D%22Properties-List%22%20id%3D%2230%22/%3E</map>
+        <text>show%20all%20properties</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Link" x="97" y="297" w="-1" h="-1" measuredW="28" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>edit</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Label" x="97" y="268" w="-1" h="-1" measuredW="185" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>thelonghouse.reservations.com</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
