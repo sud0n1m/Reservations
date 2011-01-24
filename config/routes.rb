@@ -1,6 +1,13 @@
 Reservations::Application.routes.draw do
+  resources :properties
+
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'
+  
+  require 'subdomain'
+  constraints(Subdomain) do
+    match '/' => 'properties#book'
+  end
 
   root :to => "pages#home"
 
