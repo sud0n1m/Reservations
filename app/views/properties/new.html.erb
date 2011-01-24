@@ -1,0 +1,19 @@
+<h1>Create a new property</h1>
+<%= render 'shared/error_messages' %>
+<%= form_for(@property) do |f| %>
+  
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :subdomain %><br/>
+    <%= f.text_field :subdomain %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Create Property" %>
+  </div>
+  
+<% end %>

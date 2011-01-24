@@ -4,15 +4,21 @@ gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'heroku'
 gem 'jquery-rails', '>= 0.2.6'
+gem "will_paginate", "~> 3.0.pre2"
+gem 'devise'
+
 
 group :development do
   gem "rspec-rails", "~> 2.4"
+  gem 'annotate-models', '1.0.4'
+  gem 'faker', '0.3.1'
 end
 
 group :test do
   gem "rspec-rails", "~> 2.4"
   gem "webrat"
   gem "spork", '0.8.4'
+  gem "factory_girl_rails", '1.0'
 end
 # Use unicorn as the web server
 # gem 'unicorn'

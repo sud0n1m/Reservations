@@ -182,7 +182,7 @@ button {  width: auto; overflow: visible; }
 /* HEADER STYLES */
 
 #title{
-	font-size: 1.15em;
+	font-size: 1.15em;	
 }
 
 header{
@@ -229,6 +229,14 @@ h2{
 body {
 	width: 960px;
 	margin: 10px auto 15px auto;
+}
+
+/* FLASH MESSAGES */
+
+#error_explanation{
+	background-color: #febfb4;
+	border: 1px solid #ff4c44;
+	padding: 10px;
 }
 
 
