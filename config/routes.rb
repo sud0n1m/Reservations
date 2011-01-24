@@ -1,4 +1,6 @@
 Reservations::Application.routes.draw do
+  devise_for :users
+
   resources :properties
 
   match '/contact', :to => 'pages#contact'

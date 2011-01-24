@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/application.css */
+/* @override 
+	http://localhost:3000/stylesheets/application.css
+	http://lvh.me:3000/stylesheets/application.css
+*/
 
 /*
   HTML5 ✰ Boilerplate
@@ -232,6 +235,21 @@ body {
 }
 
 /* FLASH MESSAGES */
+
+div.flash {
+	padding: 5px;
+	margin-top: 5px;
+}
+
+div.flash.alert{
+	background-color: #febfb4;
+	border: 1px solid #ff4c44;
+}
+div.flash.notice{
+	background-color: #caffdb;
+	border: 1px solid #71c79a;
+}
+
 
 #error_explanation{
 	background-color: #febfb4;
