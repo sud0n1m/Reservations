@@ -41,6 +41,9 @@ Spork.prefork do
     # config.mock_with :rr
     config.mock_with :rspec
 
+    # make devise work
+    config.include Devise::TestHelpers, :type => :controller
+
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,3 +63,4 @@ Spork.each_run do
   # This code will be run each time you run your specs.
   
 end
+
