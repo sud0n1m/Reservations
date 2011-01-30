@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124030651) do
+ActiveRecord::Schema.define(:version => 20110130004451) do
 
   create_table "properties", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20110124030651) do
   end
 
   add_index "properties", ["subdomain"], :name => "index_properties_on_subdomain", :unique => true
+
+  create_table "reservations", :force => true do |t|
+    t.string   "email"
+    t.date     "from_date"
+    t.date     "to_date"
+    t.integer  "property_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reservations", ["email"], :name => "index_reservations_on_email"
+  add_index "reservations", ["property_id"], :name => "index_reservations_on_property_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

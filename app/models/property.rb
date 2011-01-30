@@ -12,10 +12,12 @@
 
 class Property < ActiveRecord::Base
   attr_accessible :name, :subdomain
-  
+
   validates :name,  :presence => true,
-                    :length => { :maximum => 60 }
-                    
+    :length => { :maximum => 60 }
+
   validates :subdomain, :presence => true,
-                        :uniqueness => { :case_sensitive => false }
+    :uniqueness => { :case_sensitive => false }
+
+  has_many :reservations
 end

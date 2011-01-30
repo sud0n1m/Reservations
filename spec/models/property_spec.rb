@@ -34,4 +34,15 @@ describe Property do
     dupe_property = Property.create(@attr.merge(:subdomain => dupe_subdomain))
     dupe_property.should_not be_valid
   end
+
+  describe "reservation associations" do
+    before(:each) do
+      @property = Property.create(@attr)
+    end
+
+    it "should have a reservations attribute" do
+      @property.should respond_to(:reservations)
+    end
+  end 
+
 end

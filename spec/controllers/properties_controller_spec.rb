@@ -6,9 +6,11 @@ describe PropertiesController do
   describe "GET 'show'" do
     before(:each) do
       @property = Factory(:property)
+      #@user = Factory(:user)
     end
     
     it "should be successful" do
+      #sign_in @user
       get :show, :id => @property
       response.should be_success
     end
