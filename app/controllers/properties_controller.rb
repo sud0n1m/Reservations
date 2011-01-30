@@ -4,6 +4,7 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @title = "#{@property.name}"
+    @reservation = Reservation.find_by_property_id(@property)
   end
   
   def book

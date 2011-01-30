@@ -19,5 +19,5 @@ class Property < ActiveRecord::Base
   validates :subdomain, :presence => true,
     :uniqueness => { :case_sensitive => false }
 
-  has_many :reservations
+  has_many :reservations, :dependent => :destroy
 end

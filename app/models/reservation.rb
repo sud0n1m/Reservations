@@ -16,4 +16,7 @@ class Reservation < ActiveRecord::Base
   attr_accessible :email, :from_date, :to_date, :property_id
 
   belongs_to :property
+
+  default_scope :order => 'reservations.from_date DESC'
+
 end

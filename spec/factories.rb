@@ -9,9 +9,13 @@ Factory.define :user do |user|
   user.password_confirmation  "foobar"
 end
 
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
+
 Factory.define :reservation do |reservation|
   reservation.email       "colin@example.net"
-  reservation.from_date   Time.now - 5.days
-  reservation.to_date     Time.now - 4.days
-  reservation.property_id "1"
+  reservation.from_date   Time.now + 5.days
+  reservation.to_date     Time.now + 4.days
+  reservation.property_id :property
 end

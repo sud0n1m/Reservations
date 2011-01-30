@@ -27,7 +27,7 @@ describe Property do
     long_name_user = Property.new(@attr.merge(:name => long_name))
     long_name_user.should_not be_valid
   end
-  
+ 
   it "should reject subdomains that are duplicates" do
     dupe_subdomain = "EXAMPLE"
     property = Property.create!(@attr)
@@ -38,10 +38,26 @@ describe Property do
   describe "reservation associations" do
     before(:each) do
       @property = Property.create(@attr)
+      @res2 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 4.days, :property_id => @property )
+      @res1 =  Reservation.create!( :email => "colin1@example.net", :from_date => Time.now + 10.days, :to_date => Time.now + 14.days, :property_id => @property )
+
     end
 
     it "should have a reservations attribute" do
       @property.should respond_to(:reservations)
+    end
+
+    it "should have the right reservations in the right order" do
+      @property.reservations.should == [@res1, @res2]
+    
+    end
+
+    it "should destroy associated reservations" do
+      @property.destroy
+      [@res1, @res2].each do |reservation|
+        Reservation.find_by_id(reservation.id).should be_nil
+      end
+    
     end
   end 
 

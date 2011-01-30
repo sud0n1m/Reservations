@@ -25,6 +25,15 @@ describe PropertiesController do
       response.should have_selector("h1", :content => @property.name )
     end
     
+     it "should show the property's reservations" do
+       @res3 = Factory(:reservation, :property => @property)
+       #      res1 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 4.days, :property_id => "1" )
+#      res2 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 4.days, :property_id => @property )
+      get :show, :id => "1"
+      response.should have_selector("td.email", :content => @res3.email)
+ #      response.should have_selector("td.email", :content => res2.email)
+     
+     end
   end
   
   describe "GET 'new'" do
