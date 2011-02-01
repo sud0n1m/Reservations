@@ -1,7 +1,6 @@
 <h1>Create a new property</h1>
-<%= render 'shared/error_messages' %>
 <%= form_for(@property) do |f| %>
-  
+  <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
     <%= f.label :name %><br/>
     <%= f.text_field :name %>

@@ -1,8 +1,9 @@
 Reservations::Application.routes.draw do
   devise_for :users
 
-  resources :properties
-  resources :reservations
+  resources :properties do
+    resources :reservations
+  end
 
   match '/contact', :to => 'pages#contact'
   match '/about', :to => 'pages#about'

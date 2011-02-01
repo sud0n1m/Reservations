@@ -19,4 +19,7 @@ class Reservation < ActiveRecord::Base
 
   default_scope :order => 'reservations.from_date DESC'
 
+  validates :property_id, :presence => true
+  validates :from_date, :presence => true
+  validates :to_date, :presence => true
 end

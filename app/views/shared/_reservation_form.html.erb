@@ -1,0 +1,19 @@
+<%= form_for([@property, @reservation]) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :from_date %><br/>
+    <%= f.text_field :from_date %>
+  </div>
+  <div class="field">
+    <%= f.label :to_date %><br/>
+    <%= f.text_field :to_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -31,5 +31,11 @@ describe Reservation do
     end
 
   end
+
+  describe "validations" do
+    it "should require a property id" do
+      Reservation.new(@attr).should_not be_valid
+    end
+  end
   
 end

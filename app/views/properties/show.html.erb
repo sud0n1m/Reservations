@@ -2,14 +2,15 @@
 <p><%= @property.subdomain %></p>
 <%= link_to edit_property_path(@property), edit_property_path(@property)%> 
 
+<%= render 'shared/reservation_form' %>
+
 <% unless @property.reservations.empty? %>
 <table class="reservations" summary="Property reservations">
   <tr><td>Email</td><td>From</td><td>To</td></tr>
   <% @property.reservations.each do |r| %>
 
-    <tr><td><%= r.email %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
+    <tr><td class="email"><%= r.email %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
 
   <% end %>
   </table>
-
 <% end %>

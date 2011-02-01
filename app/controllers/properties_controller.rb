@@ -4,12 +4,14 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @title = "#{@property.name}"
-    @reservation = Reservation.find_by_property_id(@property)
+    @reservation = Reservation.new
   end
   
   def book
     @property = Property.find_by_subdomain!(request.subdomain)
     @title = "Book #{@property.name}"
+    @reservation = Reservation.new
+    render :layout => 'booking'
   end
   
   def new
