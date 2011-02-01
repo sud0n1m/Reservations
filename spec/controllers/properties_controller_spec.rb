@@ -26,9 +26,8 @@ describe PropertiesController do
     end
     
      it "should show the property's reservations" do
-       @res1 = Factory(:reservation, :email => "colin@example.net", :property => @property)
-       @res2 = Factory(:reservation, :email => "dave@example.com", :property => @property)
-       
+      @res1 = Factory(:reservation, :email => "colin@example.net", :property => @property)
+      @res2 = Factory(:reservation, :email => "dave@example.com", :property => @property)
       get :show, :id => @property 
       response.should have_selector("td.email", :content => @res1.email)
       response.should have_selector("td.email", :content => @res2.email)
