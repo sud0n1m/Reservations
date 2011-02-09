@@ -1,3 +1,10 @@
+GIT
+  remote: http://github.com/sud0n1m/date_validator.git
+  revision: ccc8b900e05063f3d82db8457835bbf16e8ebc5b
+  specs:
+    date_validator (0.5.9)
+      activemodel (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -119,6 +126,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate-models (= 1.0.4)
+  date_validator!
   devise
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)

@@ -1,7 +1,7 @@
 class PropertyAvailableValidator < ActiveModel::EachValidator
   def validate_each(object, attribute, value)
-    object.errors[attribute] << ' not available' if
-      Reservation.where(['? BETWEEN from_date AND to_date', value])
+    object.errors[attribute] << ' not available' unless
+      Reservation.where(['? BETWEEN from_date AND to_date', value]).empty?
   end
 end
 

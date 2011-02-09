@@ -25,8 +25,7 @@ describe ReservationsController do
       end
 
       it "should not create a reservation if the dates are not free" do
-        @res = Factory(:reservation)
-        @attr.merge(:to_date => Time.now + 4.days)
+        post :create, :reservation => @attr, :property_id => @property.id
         lambda do
          post :create, :reservation => @attr, :property_id => @property.id
         end.should_not change(Reservation, :count) 

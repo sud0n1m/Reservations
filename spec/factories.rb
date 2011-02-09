@@ -15,7 +15,7 @@ end
 
 Factory.define :reservation do |reservation|
   reservation.email       "colin@example.net"
-  reservation.from_date   Time.now + 5.days
-  reservation.to_date     Time.now + 4.days
+  reservation.from_date   Time.now + 20.weeks
+  reservation.to_date     Time.now + 21.weeks
   reservation.property_id :property
 end

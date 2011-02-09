@@ -7,7 +7,7 @@ gem 'jquery-rails', '>= 0.2.6'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'devise'
 # Scratch this sucker... wasn't very good.
-#gem 'date_validator', :git => 'http://github.com/sud0n1m/date_validator.git'
+gem 'date_validator', :git => 'http://github.com/sud0n1m/date_validator.git'
 
 
 group :development do

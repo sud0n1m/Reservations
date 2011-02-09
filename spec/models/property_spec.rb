@@ -38,7 +38,7 @@ describe Property do
   describe "reservation associations" do
     before(:each) do
       @property = Property.create(@attr)
-      @res2 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 4.days, :property_id => @property )
+      @res2 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 7.days, :property_id => @property )
       @res1 =  Reservation.create!( :email => "colin1@example.net", :from_date => Time.now + 10.days, :to_date => Time.now + 14.days, :property_id => @property )
 
     end
