@@ -4,10 +4,25 @@
 
 <%= render 'shared/reservation_form' %>
 
-<% unless @property.reservations.empty? %>
-<table class="reservations" summary="Property reservations">
+
+<% unless @property.reservations.future.empty? %>
+<h3>Future Reservations</h3>
+<table class="reservations" summary="Future Reservations">
   <tr><td>Email</td><td>From</td><td>To</td></tr>
-  <% @property.reservations.each do |r| %>
+  <% @property.reservations.future.each do |r| %>
+
+    <tr><td class="email"><%= r.email %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
+
+  <% end %>
+  </table>
+<% end %>
+
+
+<% unless @property.reservations.past.empty? %>
+<h3>Past Reservations</h3>
+<table class="reservations" summary="Past Reservations">
+  <tr><td>Email</td><td>From</td><td>To</td></tr>
+  <% @property.reservations.past.each do |r| %>
 
     <tr><td class="email"><%= r.email %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
 

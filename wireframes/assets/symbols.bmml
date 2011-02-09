@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="sketch" measuredW="684" measuredH="52" mockupW="624" mockupH="32">
+<mockup version="1.0" skin="sketch" measuredW="684" measuredH="500" mockupW="624" mockupH="480">
   <controls>
     <control controlID="0" controlTypeID="__group__" x="60" y="20" w="624" h="32" measuredW="624" measuredH="32" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -16,6 +16,19 @@
           </controlProperties>
         </control>
         <control controlID="2" controlTypeID="com.balsamiq.mockups::HRule" x="0" y="27" w="624" h="5" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="0"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="1" controlTypeID="__group__" x="60" y="80" w="548" h="420" measuredW="548" measuredH="420" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <controlName>Property-Details</controlName>
+      </controlProperties>
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::TabBar" x="0" y="0" w="548" h="420" measuredW="365" measuredH="100" zOrder="0" locked="false" isInGroup="1">
+          <controlProperties>
+            <selectedIndex>1</selectedIndex>
+            <text>Calendar%2C%20Cancellation%20Policy%2C%20House%20Rules</text>
+          </controlProperties>
+        </control>
       </groupChildrenDescriptors>
     </control>
   </controls>

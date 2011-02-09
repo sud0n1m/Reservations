@@ -36,6 +36,29 @@ describe Reservation do
     it "should require a property id" do
       Reservation.new(@attr).should_not be_valid
     end
+
+    it "should not create a reservation if the property is reserved" do
+      valid_res = @property.reservations.create(@attr)
+      duplicate_res = @property.reservations.create(@attr)
+      duplicate_res.should_not be_valid
+    end
+    
+    it "should not create a blank reservation" do
+      blank_res = @property.reservations.create
+      blank_res.should_not be_valid
+    end
+    
+    it "should not create a reservation in the past" do
+      @attr.merge!(:from_date => Time.now - 25.days)
+      res = @property.reservations.create(@attr)
+      res.should_not be_valid
+    end
+    
+    it "should not create a reservation that ends before it begins" do
+      @attr.merge!(:to_date => Time.now - 2.days)
+      res = @property.reservations.create(@attr)
+      res.should_not be_valid
+    end
   end
   
 end
