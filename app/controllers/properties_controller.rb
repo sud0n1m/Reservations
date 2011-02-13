@@ -11,6 +11,8 @@ class PropertiesController < ApplicationController
     @property = Property.find_by_subdomain!(request.subdomain)
     @title = "Book #{@property.name}"
     @reservation = Reservation.new
+    @bookings = @property.reservations
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     render :layout => 'booking'
   end
   
