@@ -20,4 +20,13 @@ class Property < ActiveRecord::Base
     :uniqueness => { :case_sensitive => false }
 
   has_many :reservations, :dependent => :destroy
+
+  def available?(date)
+    #duplicated from lib/property_available_validator.rb
+    Reservation.where(['property_id = ? AND ? BETWEEN from_date AND to_date', id, date]).empty?
+  end
+  
+
 end
+
+

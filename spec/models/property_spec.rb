@@ -35,6 +35,29 @@ describe Property do
     dupe_property.should_not be_valid
   end
 
+  describe "availability checks" do
+    before(:each) do
+      @property = Property.create(@attr)
+      @res =  Reservation.create!( :email => "colin1@example.net", :from_date => Time.now + 10.days, :to_date => Time.now + 14.days, :property_id => @property )
+      @date = Time.now + 11.days
+
+    end
+    
+    it "should have an available? method" do
+      @property.should respond_to(:available?)
+    end
+    
+    it "should not be available if there is a reservation" do
+      @property.available?(@date).should_not be_true
+    end
+    
+    it "should be available if there is no reservation" do
+      @property.available?(@date + 6.days).should be_true
+    end
+    
+  end
+
+
   describe "reservation associations" do
     before(:each) do
       @property = Property.create(@attr)
