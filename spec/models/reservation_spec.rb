@@ -42,6 +42,13 @@ describe Reservation do
       duplicate_res = @property.reservations.create(@attr)
       duplicate_res.should_not be_valid
     end
+
+    it "should not prevent a reservation being created if another property is reserved" do
+      @property2 = Factory(:property, :name => "Property 2", :subdomain => "property2")
+      res1 = @property.reservations.create(@attr)
+      res2 = @property2.reservations.create(@attr)
+      res2.should be_valid
+    end
     
     it "should not create a blank reservation" do
       blank_res = @property.reservations.create
@@ -59,6 +66,8 @@ describe Reservation do
       res = @property.reservations.create(@attr)
       res.should_not be_valid
     end
+    
+
   end
   
 end
