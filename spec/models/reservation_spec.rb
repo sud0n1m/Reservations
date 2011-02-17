@@ -4,6 +4,7 @@ describe Reservation do
 
   before(:each) do
     @property = Factory(:property)
+    @property2 = Factory(:property, :name => "Property 2", :subdomain => "property2")
     @attr = {
       :email => "colin@example.net",
       :from_date => Time.now + 25.days,
@@ -44,9 +45,9 @@ describe Reservation do
     end
 
     it "should not prevent a reservation being created if another property is reserved" do
-      @property2 = Factory(:property, :name => "Property 2", :subdomain => "property2")
-      res1 = @property.reservations.create(@attr)
-      res2 = @property2.reservations.create(@attr)
+      res1 = @property.reservations.new(@attr)
+      res2 = @property2.reservations.new(@attr)
+      res1.should be_valid
       res2.should be_valid
     end
     
@@ -65,6 +66,19 @@ describe Reservation do
       @attr.merge!(:to_date => Time.now - 2.days)
       res = @property.reservations.create(@attr)
       res.should_not be_valid
+    end
+    
+    it "should not create a reservation that begins during another reservation" do
+      @property.reservations.create!(@attr.merge(:from_date => Time.now + 2.days, :to_date => Time.now + 4.days)).should be_valid
+      @property.reservations.create(@attr.merge(:from_date => Time.now + 3.days, :to_date => Time.now + 5.days)).should_not be_valid
+    end
+    
+    it "should not create a reservation that ends during another reservation" do
+      
+    end
+    
+    it "should not create a reservation in the middle of another reservation" do
+      
     end
     
 

@@ -45,5 +45,21 @@ describe ReservationsController do
         end.should change(Reservation, :count).by(1)
       end
     end
+    
+    
+  end
+  describe "DELETE 'destroy'" do
+    before(:each) do
+      @property = Factory(:property)
+      @reservation = Factory(:reservation, :property_id => @property.id)
+    end
+    it "should delete the reservation" do
+      lambda do
+        delete :destroy, :id => @reservation, :property_id => @property
+        flash[:success].should =~ /deleted/i
+        response.should redirect_to(property_path)
+      end.should change(Reservation, :count).by(-1)
+        
+    end
   end
 end

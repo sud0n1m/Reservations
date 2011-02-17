@@ -10,7 +10,7 @@ Reservations::Application.routes.draw do
   
   require 'subdomain'
   constraints(Subdomain) do
-    match '/' => 'properties#book'
+    match '/' => 'reservations#new'
   end
 
   root :to => "pages#home"
