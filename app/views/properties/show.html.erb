@@ -11,7 +11,7 @@
   <tr><td>Email</td><td>From</td><td>To</td></tr>
   <% @property.reservations.future.each do |r| %>
 
-    <tr><td class="email"><%= r.email %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
+    <tr><td class="email"><%= r.email %><br/><%= link_to "delete", property_reservation_path(@property, r.id), :method => :delete, :confirm => "You sure?" %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
 
   <% end %>
   </table>

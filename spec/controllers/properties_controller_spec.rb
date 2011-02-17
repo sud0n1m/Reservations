@@ -64,7 +64,6 @@ describe PropertiesController do
       get 'index'
       response.should have_selector("title", :content => "All Properties")
     end
-    
   end
   
   describe "POST 'create'" do

@@ -7,15 +7,6 @@ class PropertiesController < ApplicationController
     @reservation = Reservation.new
   end
   
-  def book
-    @property = Property.find_by_subdomain!(request.subdomain)
-    @title = "Book #{@property.name}"
-    @reservation = Reservation.new
-    @bookings = @property.reservations
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-    render :layout => 'booking'
-  end
-  
   def new
     @property = Property.new
     @title = "Add a new property"

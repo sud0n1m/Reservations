@@ -1,5 +1,16 @@
 # TO DO Items
 
+Date picker provide the right format
+Users should not be able to reserve today
+
+
+
+
+
+
+
+
+
 Create a splash page on heroku
 
 Properties should have a location
