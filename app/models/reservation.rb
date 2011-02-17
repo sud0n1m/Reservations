@@ -18,7 +18,8 @@ class Reservation < ActiveRecord::Base
   belongs_to :property
 
   default_scope :order => 'reservations.from_date DESC'
-
+  
+  validates :email, :presence => true
   validates :property_id, :presence => true
   validates :from_date, :presence => true, :date => {:after => Time.now }, :property_available => true
   validates :to_date, :presence => true, :date => {:after => :from_date }, :property_available => true
