@@ -1,26 +1,27 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'heroku'
 gem 'jquery-rails', '>= 0.2.6'
-
-gem "will_paginate", "~> 3.0.pre2"
+# New pagination gem from http://railscasts.com/episodes/254-pagination-with-kaminari
+gem 'kaminari'
 gem 'devise'
+
 # Scratch this sucker... wasn't very good.
 gem 'date_validator', :git => 'http://github.com/sud0n1m/date_validator.git'
 
 
 group :development do
-  gem "rspec-rails", "~> 2.4"
+  gem "rspec-rails", ">= 2.5.0"
   gem 'annotate-models', '1.0.4'
-  gem 'faker', '0.3.1'
+  gem 'faker'
 end
 
 group :test do
-  gem "rspec-rails", "~> 2.4"
+  gem "rspec-rails", ">= 2.5.0"
   gem "webrat"
-  gem "spork", '0.8.4'
+  gem 'spork', '~> 0.9.0.rc'
   gem "factory_girl_rails", '1.0'
 end
 # Use unicorn as the web server
