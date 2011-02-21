@@ -1,6 +1,17 @@
-# TO DO Items
+h1. TO DO Items
 
-Date picker provide the right format
+-Users should be able to become admins-
+
+Anonymous users should not be able to see the login screen
+
+Admin users should be able to see any dashboard
+Anonymous Users should not be able to see the details of a reservation
+Anonymous users should not be able to go past the homepage on Bookton.com
+Anonymous users should be able to contact property owners with a question.
+Property owners should be able to see their reservations
+Property owners should be able to cancel reservations
+
+-Date picker provide the right format-
 Users should not be able to reserve today
 
 
@@ -27,10 +38,5 @@ Reservations should have a number of people
 Reservations should have a full name
 Reservations should not be confirmed until the user's credit card is authorized
 
-Admin users should be able to see any dashboard
-Anonymous Users should not be able to see the details of a reservation
-Anonymous users should not be able to go past the homepage on Bookton.com
-Anonymous users should be able to contact property owners with a question.
-Property owners should be able to see their reservations
-Property owners should be able to cancel reservations
+
 

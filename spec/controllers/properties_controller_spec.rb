@@ -6,11 +6,11 @@ describe PropertiesController do
   describe "GET 'show'" do
     before(:each) do
       @property = Factory(:property)
-      #@user = Factory(:user)
+      @user = Factory(:user)
+      sign_in @user
     end
     
     it "should be successful" do
-      #sign_in @user
       get :show, :id => @property
       response.should be_success
     end
@@ -42,6 +42,12 @@ describe PropertiesController do
   end
   
   describe "GET 'new'" do
+    
+    before(:each) do
+      @user = Factory(:user)
+      sign_in @user
+    end
+    
     it "should be successful" do
       get 'new'
       response.should be_success
@@ -54,16 +60,35 @@ describe PropertiesController do
   end
   
   describe "GET 'index'" do
-    
-    it "should be successful" do
-      get 'index'
-      response.should be_success
+
+    before(:each) do
+      @user = Factory(:user)
+      sign_in @user
+    end
+
+    describe "for non-admin users" do
+      it "should deny access" do
+        get :index
+        response.should redirect_to(root_path)
+        flash[:success].should =~ /don't have access/i
+      end
     end
     
-    it "should have the right title" do
-      get 'index'
-      response.should have_selector("title", :content => "All Properties")
+    describe "for admin users" do
+      before(:each) do
+        @user.toggle![:admin]
+      end
+      it "should be successful" do
+        get 'index'
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get 'index'
+        response.should have_selector("title", :content => "All Properties")
+      end
     end
+    
   end
   
   describe "POST 'create'" do
