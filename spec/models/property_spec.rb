@@ -3,41 +3,42 @@ require 'spec_helper'
 describe Property do
   
   before(:each) do
-    @attr = { :name => "Example Property", :subdomain => "example" }
+    @user = Factory(:user)
+    @attr = { :name => "Example Property", :subdomain => "example", :user_id => @user.id }
   end
   
   it "should create a new instance given valid attributes" do
-    Property.create!(@attr)
+    @user.properties.create!(@attr)
   end
   
   it "should require a name" do
     @attr.merge(:name => "")
-    no_name_property = Property.new(@attr.merge(:name => ""))
+    no_name_property = @user.properties.new(@attr.merge(:name => ""))
     no_name_property.should_not be_valid
   end
   
   it "should require a subdomain" do
     @attr.merge(:subdomain => "")
-    no_subdomain_property = Property.new(@attr.merge(:subdomain => ""))
+    no_subdomain_property = @user.properties.new(@attr.merge(:subdomain => ""))
     no_subdomain_property.should_not be_valid
   end
   
   it "should reject names that are too long" do
     long_name = "a" * 61
-    long_name_user = Property.new(@attr.merge(:name => long_name))
+    long_name_user = @user.properties.new(@attr.merge(:name => long_name))
     long_name_user.should_not be_valid
   end
  
   it "should reject subdomains that are duplicates" do
     dupe_subdomain = "EXAMPLE"
-    property = Property.create!(@attr)
-    dupe_property = Property.create(@attr.merge(:subdomain => dupe_subdomain))
+    property = @user.properties.create!(@attr)
+    dupe_property = @user.properties.create(@attr.merge(:subdomain => dupe_subdomain))
     dupe_property.should_not be_valid
   end
 
   describe "availability checks" do
     before(:each) do
-      @property = Property.create(@attr)
+      @property = @user.properties.create(@attr)
       @res =  Reservation.create!( :email => "colin1@example.net", :from_date => Time.now + 10.days, :to_date => Time.now + 14.days, :property_id => @property )
       @date = Time.now + 11.days
 
@@ -60,7 +61,7 @@ describe Property do
 
   describe "reservation associations" do
     before(:each) do
-      @property = Property.create(@attr)
+      @property = @user.properties.create(@attr)
       @res2 = Reservation.create!( :email => "colin@example.net", :from_date => Time.now + 5.days, :to_date => Time.now + 7.days, :property_id => @property )
       @res1 =  Reservation.create!( :email => "colin1@example.net", :from_date => Time.now + 10.days, :to_date => Time.now + 14.days, :property_id => @property )
 

@@ -14,18 +14,18 @@ class PropertiesController < ApplicationController
   
   def index
     @title = "All Properties"
-    @properties = Property.paginate(:page => params[:page])
+    @properties = Property.page(params[:page])
   end
   
   def create
-    @property = Property.new(params[:property])
+    @user = current_user
+    @property = @user.properties.build(params[:property])
     if @property.save
-      flash[:success] = "Property Added"
-      redirect_to @property
+      redirect_to @property, :flash => { :success => "Property added" }
     else
       @title = "Add a new property"
       render 'new'
-    end
+    end    
   end
   
 end

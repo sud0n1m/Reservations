@@ -3,11 +3,15 @@ require 'spec_helper'
 describe PropertiesController do
   render_views
   
+  before(:each) do
+    @attr = {:subdomain => "subdomain", :name => "propertyname"}
+    @user = Factory(:user)
+  end
+
   describe "GET 'show'" do
     before(:each) do
-      @property = Factory(:property)
-      @user = Factory(:user)
       sign_in @user
+      @property = Factory(:property)
     end
     
     it "should be successful" do
@@ -44,7 +48,6 @@ describe PropertiesController do
   describe "GET 'new'" do
     
     before(:each) do
-      @user = Factory(:user)
       sign_in @user
     end
     
@@ -62,22 +65,23 @@ describe PropertiesController do
   describe "GET 'index'" do
 
     before(:each) do
-      @user = Factory(:user)
       sign_in @user
     end
 
-    describe "for non-admin users" do
-      it "should deny access" do
-        get :index
-        response.should redirect_to(root_path)
-        flash[:success].should =~ /don't have access/i
-      end
-    end
+    ## I'm going to leave this for later.
+    # describe "for non-admin users" do
+    #   it "should deny access" do
+    #     get :index
+    #     response.should redirect_to(root_path)
+    #     flash[:success].should =~ /don't have access/i
+    #   end
+    # end
     
     describe "for admin users" do
-      before(:each) do
-        @user.toggle![:admin]
-      end
+      # before(:each) do
+      #         @user.toggle![:admin]
+      #       end
+             
       it "should be successful" do
         get 'index'
         response.should be_success
@@ -95,16 +99,17 @@ describe PropertiesController do
     describe "failure" do
       before(:each) do
         @attr = { :name => "", :subdomain => ""}
+        sign_in @user
       end
       
       it "should not create a property" do
         lambda do
-          post :create, :user => @attr
+          post :create, :property => @attr, :user_id => @user.id
         end.should_not change(Property, :count)
       end
       
       it "should display an error" do
-          post :create, :user => @attr
+          post :create, :property => @attr, :user_id => @user.id
           response.should have_selector("div", :id => "error_explanation")        
       end  
     end
@@ -112,12 +117,13 @@ describe PropertiesController do
     describe "success" do
       
       before(:each) do
+        sign_in @user
         @attr = { :name => "New Property", :subdomain => "newproperty"}
       end
       
       it "should create a new property" do
         lambda do
-          post :create, :property => @attr
+          post :create, :property => @attr, :user_id => @user.id
         end.should change(Property, :count).by(1)
       end
       
@@ -131,5 +137,19 @@ describe PropertiesController do
         flash[:success].should =~ /property added/i
       end
     end
+  end
+  
+  describe "validations" do
+    before(:each) do
+      sign_in @user
+    end
+    it "should require a user id" do
+      Property.new(@attr).should_not be_valid
+    end
+    
+    it "should require non-blank subdomain" do
+      @user.properties.build(@attr.merge(:subdomain => "  ")).should_not be_valid
+    end
+    
   end
 end

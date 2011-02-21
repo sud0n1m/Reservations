@@ -1,6 +1,10 @@
 h1. TO DO Items
-
+-Properties should belong to users-
 -Users should be able to become admins-
+-Fixed breaking tests-
+-Date picker provide the right format-
+-Add a bunch of fake properties and reservations-
+
 
 Anonymous users should not be able to see the login screen
 
@@ -11,7 +15,6 @@ Anonymous users should be able to contact property owners with a question.
 Property owners should be able to see their reservations
 Property owners should be able to cancel reservations
 
--Date picker provide the right format-
 Users should not be able to reserve today
 
 

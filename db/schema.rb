@@ -10,16 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221154317) do
+ActiveRecord::Schema.define(:version => 20110221165300) do
 
   create_table "properties", :force => true do |t|
     t.string   "name"
     t.string   "subdomain"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "properties", ["subdomain"], :name => "index_properties_on_subdomain", :unique => true
+  add_index "properties", ["user_id"], :name => "index_properties_on_user_id"
 
   create_table "reservations", :force => true do |t|
     t.string   "email"
