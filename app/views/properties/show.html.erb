@@ -1,5 +1,6 @@
 <h1><%= @property.name %></h1>
 <p><%= @property.subdomain %></p>
+<p><%= @property.user.email %></p>
 <%= link_to edit_property_path(@property), edit_property_path(@property)%> 
 
 <%= render 'shared/reservation_form' %>
@@ -11,7 +12,7 @@
   <tr><td>Email</td><td>From</td><td>To</td></tr>
   <% @property.reservations.future.each do |r| %>
 
-    <tr><td class="email"><%= r.email %><br/><%= link_to "delete", property_reservation_path(@property, r.id), :method => :delete, :confirm => "You sure?" %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
+    <tr><td class="email"><%= link_to r.email, property_reservation_path(@property, r.id) %><br/><%= link_to "delete", property_reservation_path(@property, r.id), :method => :delete, :confirm => "You sure?" %></td><td><%= r.from_date %></td><td><%= r.to_date %></td></tr>
 
   <% end %>
   </table>

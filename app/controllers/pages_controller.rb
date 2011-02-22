@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   def home
-    @title = "Home"
+    if current_user
+      render 'properties#show'
+    else
+      @title = "Home"
+    end
   end
 
   def contact

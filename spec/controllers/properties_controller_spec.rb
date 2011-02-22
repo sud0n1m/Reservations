@@ -6,6 +6,7 @@ describe PropertiesController do
   before(:each) do
     @attr = {:subdomain => "subdomain", :name => "propertyname"}
     @user = Factory(:user)
+    @admin = Factory(:user, :admin => true, :email => "admin@example.com")
   end
 
   describe "GET 'show'" do
@@ -14,21 +15,24 @@ describe PropertiesController do
       @property = Factory(:property)
     end
     
-    it "should be successful" do
-      get :show, :id => @property
-      response.should be_success
-    end
-    
-    it "should find the right property" do
-      get :show,  :id => @property
-      assigns(:property).should == @property
-    end
-    
-    it "should display the property name" do
-      get :show, :id => @property
-      response.should have_selector("h1", :content => @property.name )
-    end
-    
+    describe "for a normal user" do
+      
+
+      it "should be successful" do
+        get :show, :id => @property
+        response.should be_success
+      end
+
+      it "should find the right property" do
+        get :show,  :id => @property
+        assigns(:property).should == @property
+      end
+
+      it "should display the property name" do
+        get :show, :id => @property
+        response.should have_selector("h1", :content => @property.name )
+      end
+
      it "should show the property's reservations" do
       @res1 = Factory(:reservation, :email => "colin@example.net", 
                                     :from_date => Time.now + 4.weeks, 
@@ -41,46 +45,68 @@ describe PropertiesController do
       get :show, :id => @property 
       response.should have_selector("td.email", :content => @res1.email)
       response.should have_selector("td.email", :content => @res2.email)
-     
+
      end
+    end
+    
+    describe "for an admin user" do
+      before(:each) do
+        sign_in @admin
+      end
+      
+      it "should be successful" do
+        get :show, :id => @property
+        response.should be_success
+      end
+      
+      
+    end
+    
   end
   
   describe "GET 'new'" do
     
-    before(:each) do
-      sign_in @user
+    describe "for non-admin users" do
+      it "should deny access" do
+        sign_in @user
+        get :index
+        response.should redirect_to(root_path)
+        flash[:alert].should =~ /don't have access/i
+      end
     end
     
-    it "should be successful" do
-      get 'new'
-      response.should be_success
-    end
+     describe "for admin users" do
+      before(:each) do
+         sign_in @admin
+      end
+      
+      it "should be successful" do
+        get 'new'
+        response.should be_success
+      end
     
-    it "should have the right title" do
-      get 'new'
-      response.should have_selector("title", :content => "Add a new property")
+      it "should have the right title" do
+        get 'new'
+        response.should have_selector("title", :content => "Add a new property")
+      end
     end
   end
   
   describe "GET 'index'" do
 
-    before(:each) do
-      sign_in @user
+    describe "for non-admin users" do
+      it "should deny access" do
+        sign_in @user
+        get :index
+        response.should redirect_to(root_path)
+        flash[:alert].should =~ /don't have access/i
+      end
     end
-
-    ## I'm going to leave this for later.
-    # describe "for non-admin users" do
-    #   it "should deny access" do
-    #     get :index
-    #     response.should redirect_to(root_path)
-    #     flash[:success].should =~ /don't have access/i
-    #   end
-    # end
     
     describe "for admin users" do
-      # before(:each) do
-      #         @user.toggle![:admin]
-      #       end
+      before(:each) do
+         sign_in @admin
+      end
              
       it "should be successful" do
         get 'index'
@@ -99,7 +125,7 @@ describe PropertiesController do
     describe "failure" do
       before(:each) do
         @attr = { :name => "", :subdomain => ""}
-        sign_in @user
+        sign_in @admin
       end
       
       it "should not create a property" do
@@ -117,7 +143,7 @@ describe PropertiesController do
     describe "success" do
       
       before(:each) do
-        sign_in @user
+        sign_in @admin
         @attr = { :name => "New Property", :subdomain => "newproperty"}
       end
       
@@ -139,16 +165,47 @@ describe PropertiesController do
     end
   end
   
+  describe "DELETE 'destroy'" do
+    before(:each) do
+      @property = Factory(:property)
+    end
+    
+    describe "as a non-signed in user" do
+      it "should deny access" do
+        delete :destroy, :id => @property
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    
+    describe "as a non-admin user" do
+      it "should protect the page" do
+        sign_in @user
+        delete :destroy, :id => @property
+        response.should redirect_to(root_path)
+        flash[:alert].should =~ /don't have access/i
+      end
+    end
+    
+    describe "as an admin user" do
+      it "should destroy the property" do
+        lambda do
+          delete :destroy, :id => @property.id
+        end.should change(Property, :count).by(-1)
+      end
+    end
+    
+  end
+  
   describe "validations" do
     before(:each) do
-      sign_in @user
+      sign_in @admin
     end
     it "should require a user id" do
       Property.new(@attr).should_not be_valid
     end
     
     it "should require non-blank subdomain" do
-      @user.properties.build(@attr.merge(:subdomain => "  ")).should_not be_valid
+      @admin.properties.build(@attr.merge(:subdomain => "  ")).should_not be_valid
     end
     
   end

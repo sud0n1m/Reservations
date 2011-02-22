@@ -12,7 +12,8 @@ Reservations::Application.routes.draw do
   constraints(Subdomain) do
     match '/' => 'reservations#new'
   end
-
+  
+  match '/' => 'properties#show', :as => 'user_root'
   root :to => "pages#home"
 
   # The priority is based upon order of creation:

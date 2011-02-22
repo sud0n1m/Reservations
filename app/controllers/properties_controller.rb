@@ -1,8 +1,15 @@
 class PropertiesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:book, :create]
+  before_filter :authenticate_user!
+  before_filter :admin_user, :except => :show
+  before_filter :valid_user, :only => :show
   
   def show
-    @property = Property.find(params[:id])
+    @user = current_user
+    unless params[:id] != nil
+      @property = @user.properties.first
+    else
+      @property = Property.find(params[:id])
+    end
     @title = "#{@property.name}"
     @reservation = Reservation.new
   end
@@ -28,4 +35,27 @@ class PropertiesController < ApplicationController
     end    
   end
   
+  def destroy
+    Property.find(params[:id]).destroy
+    flash[:success] = "Property removed."
+    redirect_to properties_path
+  end
+  
+  private
+  
+  def admin_user
+    redirect_to root_path, :flash => { :alert => "You don't have access to that" } unless current_user.admin? 
+  end
+  
+  def valid_user
+    @user = current_user
+    unless params[:id] != nil
+      @property = @user.properties.first
+    else
+      @property = Property.find(params[:id])
+    end
+    unless @user = @property.user || @user.admin?
+      redirect_to root_path, :flash => { :alert => "You don't have access to that" }
+    end
+  end
 end
