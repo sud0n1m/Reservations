@@ -1,0 +1,39 @@
+General:
+- Fixed breaking tests @done(2011-02-22)
+- Create a splash page on heroku
+-  Anonymous users should not be able to go past the homepage on Bookton.com
+Users:
+- Users should be able to become admins @done(2011-02-22)
+Properties:
+- Properties should belong to users @done(2011-02-22)
+- Date picker provide the right format @done(2011-02-22)
+- Add a bunch of fake properties and reservations @done(2011-02-22)
+- A logged in user should see their property at the root @done(2011-02-22)
+	- Add a test for logged in users to see their property at the root
+- Users should not be able to create a new property @done(2011-02-22)
+- Users should only be able to see their property @done(2011-02-22)
+- Admin users should be able to see any property @done(2011-02-22)
+- Properties should have a location
+- Properties should have a homepage
+- Properties should have a phone number
+- Properties should have a maximum number of people
+- Properties should have a cancellation policy
+- Properties should have house rules
+- Properties should show a calendar with availability
+
+Reservations:
+- Add the reservations view
+- Admins should be able to properly destroy a reservation @done(2011-02-22)
+	- Only admins should be able to destroy a reservation
+- Anonymous Users should not be able to see the details of a reservation
+- Anonymous users should be able to contact property owners with a question.
+- Property owners should be able to see their reservations
+- Property owners should be able to cancel reservations
+- Users should not be able to reserve today
+- Users should be able to choose dates using a Javascript Datepicker @done(2011-02-22)
+- Reservations should have a price per night
+- Reservations should have a number of people
+- Reservations should have a full name
+- Reservations should not be confirmed until the user's credit card is authorized
+
+
