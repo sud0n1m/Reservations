@@ -188,12 +188,12 @@ describe PropertiesController do
     
     describe "as an admin user" do
       it "should destroy the property" do
+        sign_in @admin
         lambda do
           delete :destroy, :id => @property.id
         end.should change(Property, :count).by(-1)
       end
     end
-    
   end
   
   describe "validations" do
