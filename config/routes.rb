@@ -11,6 +11,7 @@ Reservations::Application.routes.draw do
   require 'subdomain'
   constraints(Subdomain) do
     match '/' => 'reservations#new'
+    match 'bookings/:id' => 'reservations#show'
   end
   
   match '/' => 'properties#show', :as => 'user_root'

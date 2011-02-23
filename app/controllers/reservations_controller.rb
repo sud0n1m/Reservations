@@ -2,7 +2,7 @@ class ReservationsController < ApplicationController
   before_filter :get_property
   
   def show
-
+    @reservation = Reservation.find(params[:id])
   end
 
   def create

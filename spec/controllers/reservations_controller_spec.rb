@@ -3,6 +3,41 @@ require 'spec_helper'
 describe ReservationsController do
   render_views
 
+  describe "GET 'show'" do
+    
+    before(:each) do
+      @owner = Factory(:user)
+      @property = Factory(:property, :user_id => @owner)
+      @reservation = Factory(:reservation, :property_id => @property)
+    end
+    
+    describe "for a user with the hash" do
+      it "should show the reservation"
+    end
+    
+    describe "for the property owner" do
+      it "should show the reservation" do
+        sign_in @owner
+        get :show, :id => @reservation.id
+        response.should be_success
+      end
+    end
+      
+    describe "for an admin" do
+      it "should show the reservation"
+    
+    end
+    
+    describe "for an anonymous user" do
+      it "should redirect to the site root" 
+    end
+    
+    describe "for an unauthorized user" do
+      it "should redirect to the site root"
+      
+    end
+  end
+
   describe "POST 'create'" do
 
     before(:each) do

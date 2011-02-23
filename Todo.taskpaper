@@ -20,7 +20,6 @@ Properties:
 - Properties should have a cancellation policy
 - Properties should have house rules
 - Properties should show a calendar with availability
-
 Reservations:
 - Add the reservations view
 - Admins should be able to properly destroy a reservation @done(2011-02-22)
