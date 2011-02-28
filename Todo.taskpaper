@@ -1,7 +1,14 @@
+Splash Page:
+- Set up mailchimp @done(2011-02-24)
+- Embed the signup form @done(2011-02-24)
+- Style the homepage @done(2011-02-24)
+- Upload to website @done(2011-02-24)
+- Redirect the domain @done(2011-02-24)
+- Make it look decent in IE.
 General:
 - Fixed breaking tests @done(2011-02-22)
 - Create a splash page on heroku
--  Anonymous users should not be able to go past the homepage on Bookton.com
+- Anonymous users should not be able to go past the homepage on Bookton.com
 Users:
 - Users should be able to become admins @done(2011-02-22)
 Properties:
